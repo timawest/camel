@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/cameltest
+    username: postgres
+    password: postgres
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  batch:
+    job:
+      enabled: false
+    initialize-schema: always
+source:
+  ibmmq:
+    enabled: true
+    camel:
+      scheduler:
+        upload:
+          name: quartz:ibmmqUploadScheduler
+          cron: 0+0/2+*+?+*+*
+
